@@ -9,15 +9,15 @@ def plotFigure(data_path):
         fig.show()
 
 def getDataSource(data_path):
-    ice_cream_sales = []
+    temperature = []
     cold_drink_sales = []
     with open(data_path) as csv_file:
         csv_reader = csv.DictReader(csv_file)
         for row in csv_reader:
-            ice_cream_sales.append(float(row["Temperature"]))
+            temperature.append(float(row["Temperature"]))
             cold_drink_sales.append(float(row["Ice-cream Sales( ₹ )"]))
 
-    return {"x" : ice_cream_sales, "y": cold_drink_sales}
+    return {"x" : temperature, "y": cold_drink_sales}
 
 def findCorrelation(datasource):
     correlation = np.corrcoef(datasource["x"], datasource["y"])
